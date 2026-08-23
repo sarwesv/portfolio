@@ -1,9 +1,9 @@
 const PORTFOLIO_DATA = {
   profile: {
-    name: "Sarwesv",
-    title: "Software Engineer & Web Developer",
-    tagline: "Building interactive web applications, developer utilities, and modern digital tools.",
-    bio: "Passionate developer crafting fast, responsive web applications, interactive simulations, and productive utilities.",
+    name: "Sarvesw",
+    title: "Web Developer & Coder",
+    tagline: "Building fun web applications, games, and developer tools.",
+    bio: "Just an 8-year-old who loves computers and coding.",
     avatar: "assets/images/teleprompter.png",
     location: "United States",
     status: "Active GitHub Developer",
