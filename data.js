@@ -1,9 +1,11 @@
 const PORTFOLIO_DATA = {
   profile: {
     name: "Sarvesw",
+    handle: "sarwesv",
+    pronouns: "he/him",
     title: "Web Developer & Coder",
-    tagline: "Building fun web applications, games, and developer tools.",
-    bio: "Just an 8-year-old who loves computers and coding.",
+    tagline: "Just a 9-year-old who loves computers and coding.",
+    bio: "Just a 9-year-old who loves computers and coding.",
     avatar: "assets/images/teleprompter.png",
     location: "United States",
     status: "Active GitHub Developer",
