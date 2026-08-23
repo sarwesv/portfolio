@@ -9,7 +9,7 @@ const PORTFOLIO_DATA = {
     status: "Active GitHub Developer",
     githubProfile: "https://github.com/sarwesv",
     githubPagesRoot: "https://sarwesv.github.io",
-    email: "sarvick.vemula@gmail.com",
+    email: "mogalt@gmail.com",
     stats: [
       { label: "Public Repositories", value: "7" },
       { label: "Active Deployments", value: "7" },
