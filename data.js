@@ -1,6 +1,6 @@
 const PORTFOLIO_DATA = {
   profile: {
-    name: "Sarv",
+    name: "Sarwesv",
     title: "Software Engineer & Web Developer",
     tagline: "Building interactive web applications, developer utilities, and modern digital tools.",
     bio: "Passionate developer crafting fast, responsive web applications, interactive simulations, and productive utilities.",

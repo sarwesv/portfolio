@@ -382,12 +382,40 @@ body {
   line-height: 1.15;
   margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
+  animation: heroTitleEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .gradient-text {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 25%, #ec4899 50%, #8b5cf6 75%, #38bdf8 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradientWave 6s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.3));
+}
+
+@keyframes heroTitleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-subtitle {
