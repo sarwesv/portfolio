@@ -375,8 +375,8 @@ function initContactForm() {
       }
 
       try {
-        // Send email silently in background directly to sarvick.vemula@gmail.com
-        const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        // Send email silently in background via FormSubmit token 507bf8be6742e3efa2cab599ff6cb6fc
+        const response = await fetch('https://formsubmit.co/ajax/507bf8be6742e3efa2cab599ff6cb6fc', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
