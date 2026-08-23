@@ -4,7 +4,7 @@ const PORTFOLIO_DATA = {
     title: "Software Engineer & Web Developer",
     tagline: "Building interactive web applications, developer utilities, and modern digital tools.",
     bio: "Passionate developer crafting fast, responsive web applications, interactive simulations, and productive utilities.",
-    avatar: "assets/images/ai_dashboard.jpg",
+    avatar: "assets/images/teleprompter.png",
     location: "United States",
     status: "Active GitHub Developer",
     githubProfile: "https://github.com/sarwesv",
@@ -37,7 +37,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Designed for content creators and presenters. Features keyboard shortcuts, live text editing, customizable text size and colors, mirror mode for teleprompter hardware rigs, and high FPS smooth scrolling.",
       repoUrl: "https://github.com/sarwesv/teleprompter",
       demoUrl: "https://sarwesv.github.io/teleprompter/",
-      image: "assets/images/dev_tools.jpg",
+      image: "assets/images/teleprompter.png",
       tags: ["JavaScript", "HTML5", "CSS Grid", "Teleprompter", "Web App"],
       metrics: [
         { label: "Scroll Engine", value: "60 FPS" },
@@ -62,7 +62,7 @@ const PORTFOLIO_DATA = {
       longDescription: "VaultCraft Savings Plan Tracker enables users to monitor financial targets, log transactions, calculate progress metrics, and generate formatted invoices on demand.",
       repoUrl: "https://github.com/sarwesv/savings-plan-tracker-and-invoice",
       demoUrl: "https://sarwesv.github.io/savings-plan-tracker-and-invoice/",
-      image: "assets/images/ecommerce_app.jpg",
+      image: "assets/images/savings.png",
       tags: ["JavaScript", "Local Storage", "Finance", "Invoice", "Data Visualization"],
       metrics: [
         { label: "Data Persistence", value: "Local Storage" },
@@ -86,7 +86,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Streamlined invoice management application supporting line-item calculations, client management, tax adjustments, and printable clean invoice templates.",
       repoUrl: "https://github.com/sarwesv/invoice",
       demoUrl: "https://sarwesv.github.io/invoice/",
-      image: "assets/images/ecommerce_app.jpg",
+      image: "assets/images/invoice.png",
       tags: ["JavaScript", "HTML5", "CSS3", "Invoice Generator", "Print CSS"],
       metrics: [
         { label: "Load Time", value: "< 100ms" },
@@ -110,7 +110,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Features randomized question pools, score tracking, timed answer options, high score persistence, and interactive review of incorrect answers.",
       repoUrl: "https://github.com/sarwesv/US-state-capitals-quiz",
       demoUrl: "https://sarwesv.github.io/US-state-capitals-quiz/",
-      image: "assets/images/ai_dashboard.jpg",
+      image: "assets/images/us_state_capitals_quiz.png",
       tags: ["JavaScript", "HTML5", "CSS3", "Quiz", "Geography"],
       metrics: [
         { label: "Questions", value: "50 States" },
@@ -134,7 +134,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Test your trivia skills across world and national capital cities. Simple, intuitive UI designed for fast mobile and desktop play.",
       repoUrl: "https://github.com/sarwesv/Capitalquiz",
       demoUrl: "https://sarwesv.github.io/Capitalquiz/",
-      image: "assets/images/ai_dashboard.jpg",
+      image: "assets/images/capital_quiz.png",
       tags: ["JavaScript", "HTML5", "CSS3", "Trivia"],
       metrics: [
         { label: "Interface", value: "Responsive" },
@@ -146,47 +146,25 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "prodigymind",
-      title: "Prodigymind Learning Platform",
+      id: "lofi-player",
+      title: "Lofi Ambient Player",
       category: "web",
       featured: false,
-      badge: "Learning Tool",
-      tagline: "Interactive learning workspace with custom sound effects and visual feedback.",
-      description: "Educational web application incorporating custom audio sound effects (SFX) and engaging UI elements to make learning interactive.",
-      longDescription: "Prodigymind combines interactive lessons, sound effect feedback, and structured modules to create an immersive learning atmosphere.",
-      repoUrl: "https://github.com/sarwesv/Prodigymind",
-      demoUrl: "https://sarwesv.github.io/Prodigymind/",
-      image: "assets/images/ai_dashboard.jpg",
-      tags: ["JavaScript", "HTML5", "Web Audio API", "Education"],
+      badge: "Audio App",
+      tagline: "Minimalist ambient Lofi music player with relaxation visuals.",
+      description: "Web music player tailored for study and focus with soothing Lofi beats and visual background animations.",
+      longDescription: "An aesthetic web audio player featuring curated Lofi audio tracks, ambient sound controls, and relaxing background visualizers.",
+      repoUrl: "https://github.com/sarwesv/Lofi",
+      demoUrl: "https://sarwesv.github.io/Lofi/",
+      image: "assets/images/lofi.png",
+      tags: ["JavaScript", "Web Audio", "CSS Glassmorphism", "Music"],
       metrics: [
-        { label: "Audio", value: "Custom SFX" },
+        { label: "Design", value: "Glassmorphism" },
         { label: "Deploy", value: "GitHub Pages" }
       ],
       features: [
-        "Custom audio sound effects for key interactions",
-        "Interactive challenge modules and progress cards"
-      ]
-    },
-    {
-      id: "requestall",
-      title: "RequestAll Developer Tool",
-      category: "devtools",
-      featured: false,
-      badge: "API Utility",
-      tagline: "Batch HTTP request utility for testing and inspecting API endpoints.",
-      description: "A developer utility for firing concurrent API requests, analyzing response payloads, and inspecting HTTP headers.",
-      longDescription: "RequestAll helps developers test multiple API endpoints simultaneously, benchmark response times, and format JSON output.",
-      repoUrl: "https://github.com/sarwesv/requestall",
-      demoUrl: "https://sarwesv.github.io/requestall/",
-      image: "assets/images/dev_tools.jpg",
-      tags: ["JavaScript", "Fetch API", "Async", "API Testing"],
-      metrics: [
-        { label: "Concurrent Req", value: "Supported" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Batch request dispatcher using async/await",
-        "Response status code and latency breakdown"
+        "Audio playback controls with track toggles",
+        "Ambient background mood lighting visuals"
       ]
     },
     {
@@ -200,7 +178,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Slide numbered tiles on a grid to combine them and reach 2048. Includes high score saving in browser LocalStorage.",
       repoUrl: "https://github.com/sarwesv/2048",
       demoUrl: "https://sarwesv.github.io/2048/",
-      image: "assets/images/ai_dashboard.jpg",
+      image: "assets/images/game_2048.png",
       tags: ["JavaScript", "CSS Animations", "Game", "Mobile Touch"],
       metrics: [
         { label: "Animation", value: "60 FPS" },
@@ -222,7 +200,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Control the snake to collect food while avoiding walls and your own tail. Features increasing speed levels as score climbs.",
       repoUrl: "https://github.com/sarwesv/snake",
       demoUrl: "https://sarwesv.github.io/snake/",
-      image: "assets/images/ai_dashboard.jpg",
+      image: "assets/images/snake.png",
       tags: ["JavaScript", "HTML5 Canvas", "Game Dev", "Retro"],
       metrics: [
         { label: "Renderer", value: "2D Canvas" },
@@ -234,47 +212,47 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "lofi-player",
-      title: "Lofi Ambient Player",
+      id: "prodigymind",
+      title: "Prodigymind Learning Platform",
       category: "web",
       featured: false,
-      badge: "Audio App",
-      tagline: "Minimalist ambient Lofi music player with relaxation visuals.",
-      description: "Web music player tailored for study and focus with soothing Lofi beats and visual background animations.",
-      longDescription: "An aesthetic web audio player featuring curated Lofi audio tracks, ambient sound controls, and relaxing background visualizers.",
-      repoUrl: "https://github.com/sarwesv/Lofi",
-      demoUrl: "https://sarwesv.github.io/Lofi/",
-      image: "assets/images/ai_dashboard.jpg",
-      tags: ["JavaScript", "Web Audio", "CSS Glassmorphism", "Music"],
+      badge: "Learning Tool",
+      tagline: "Interactive learning workspace with custom sound effects and visual feedback.",
+      description: "Educational web application incorporating custom audio sound effects (SFX) and engaging UI elements to make learning interactive.",
+      longDescription: "Prodigymind combines interactive lessons, sound effect feedback, and structured modules to create an immersive learning atmosphere.",
+      repoUrl: "https://github.com/sarwesv/Prodigymind",
+      demoUrl: "https://sarwesv.github.io/Prodigymind/",
+      image: "assets/images/us_state_capitals_quiz.png",
+      tags: ["JavaScript", "HTML5", "Web Audio API", "Education"],
       metrics: [
-        { label: "Design", value: "Glassmorphism" },
+        { label: "Audio", value: "Custom SFX" },
         { label: "Deploy", value: "GitHub Pages" }
       ],
       features: [
-        "Audio playback controls with track toggles",
-        "Ambient background mood lighting visuals"
+        "Custom audio sound effects for key interactions",
+        "Interactive challenge modules and progress cards"
       ]
     },
     {
-      id: "fishsim",
-      title: "Fish Aquarium Simulation",
-      category: "web",
+      id: "requestall",
+      title: "RequestAll Developer Tool",
+      category: "devtools",
       featured: false,
-      badge: "Simulation",
-      tagline: "Interactive 2D fish aquarium canvas physics simulation.",
-      description: "Simulation app demonstrating autonomous fish movement, obstacle avoidance, and interactive feeding behaviors.",
-      longDescription: "Built using HTML Canvas and physics vectors to simulate autonomous fish swimming patterns in a virtual tank.",
-      repoUrl: "https://github.com/sarwesv/fishsim",
-      demoUrl: "https://sarwesv.github.io/fishsim/",
-      image: "assets/images/ai_dashboard.jpg",
-      tags: ["JavaScript", "Canvas", "Physics Vector", "Simulation"],
+      badge: "API Utility",
+      tagline: "Batch HTTP request utility for testing and inspecting API endpoints.",
+      description: "A developer utility for firing concurrent API requests, analyzing response payloads, and inspecting HTTP headers.",
+      longDescription: "RequestAll helps developers test multiple API endpoints simultaneously, benchmark response times, and format JSON output.",
+      repoUrl: "https://github.com/sarwesv/requestall",
+      demoUrl: "https://sarwesv.github.io/requestall/",
+      image: "assets/images/teleprompter.png",
+      tags: ["JavaScript", "Fetch API", "Async", "API Testing"],
       metrics: [
-        { label: "Physics", value: "Vector-based" },
+        { label: "Concurrent Req", value: "Supported" },
         { label: "Deploy", value: "GitHub Pages" }
       ],
       features: [
-        "Autonomous boids-like swimming algorithms",
-        "Interactive mouse click feeding events"
+        "Batch request dispatcher using async/await",
+        "Response status code and latency breakdown"
       ]
     }
   ],
