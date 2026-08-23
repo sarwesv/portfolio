@@ -11,8 +11,8 @@ const PORTFOLIO_DATA = {
     githubPagesRoot: "https://sarwesv.github.io",
     email: "sarwesv@github.com",
     stats: [
-      { label: "Repositories", value: "14+" },
-      { label: "Active Deployments", value: "10+" },
+      { label: "Public Repositories", value: "7" },
+      { label: "Active Deployments", value: "7" },
       { label: "Primary Language", value: "JavaScript" },
       { label: "GitHub Pages", value: "Live" }
     ]
@@ -76,110 +76,18 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "us-state-capitals-quiz",
-      title: "US State Capitals Quiz",
-      category: "web",
-      featured: true,
-      badge: "Interactive Quiz",
-      tagline: "Interactive educational quiz application for testing US state capitals knowledge.",
-      description: "A fast-paced geography quiz game where players test their knowledge of all 50 US state capitals with score tracking and instant feedback.",
-      longDescription: "Features randomized question pools, score tracking, timed answer options, high score persistence, and interactive review of incorrect answers.",
-      repoUrl: "https://github.com/sarwesv/US-state-capitals-quiz",
-      demoUrl: "https://sarwesv.github.io/US-state-capitals-quiz/",
-      image: "assets/images/us_state_capitals_quiz.png",
-      tags: ["JavaScript", "HTML5", "CSS3", "Quiz", "Geography"],
-      metrics: [
-        { label: "Questions", value: "50 States" },
-        { label: "Feedback", value: "Instant" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Randomized state questions with 4 multiple-choice options",
-        "Instant visual indicators for correct and incorrect answers",
-        "Final score breakdown and retry capabilities"
-      ]
-    },
-    {
-      id: "driving-sim",
-      title: "Drive - Driving Simulator",
-      category: "web",
-      featured: true,
-      badge: "Physics Simulation",
-      tagline: "2D driving simulator web app featuring physics vectors and traffic logic.",
-      description: "Interactive browser driving simulator with vehicle controls, traffic AI steering, collision detection, and customizable road layouts.",
-      longDescription: "Built with modular physics scripts (physics.js, traffic.js, audio.js) for realistic acceleration, turning friction, and autonomous vehicle steering.",
-      repoUrl: "https://github.com/sarwesv/portfolio",
-      demoUrl: "https://sarwesv.github.io/portfolio/",
-      image: "assets/images/drive.png",
-      tags: ["JavaScript", "HTML5 Canvas", "Physics Vector", "Traffic AI", "Game Dev"],
-      metrics: [
-        { label: "Physics Engine", value: "Custom Vector" },
-        { label: "Frame Rate", value: "60 FPS" },
-        { label: "Audio", value: "Engine Sound FX" }
-      ],
-      features: [
-        "Vehicle physics model with acceleration, braking, and drift vectors",
-        "Autonomous traffic AI steering and obstacle avoidance",
-        "Synthesized Web Audio engine sound effects and collision sounds"
-      ]
-    },
-    {
-      id: "rocket-sim",
-      title: "Rocket Flight Simulator",
-      category: "web",
-      featured: false,
-      badge: "Simulation",
-      tagline: "Interactive rocket launch and orbital mechanics flight simulator.",
-      description: "Spaceflight simulator modeling rocket thrust, gravity vectors, fuel consumption, and flight trajectory telemetries.",
-      longDescription: "Features live velocity graphs, fuel gauge displays, staging controls, and orbital altitude tracking.",
-      repoUrl: "https://github.com/sarwesv/portfolio",
-      demoUrl: "https://sarwesv.github.io/portfolio/",
-      image: "assets/images/rocket_simulator.png",
-      tags: ["JavaScript", "HTML5 Canvas", "Orbital Mechanics", "Physics"],
-      metrics: [
-        { label: "Telemetry", value: "Real-time" },
-        { label: "Physics", value: "Gravity & Thrust" }
-      ],
-      features: [
-        "Real-time flight telemetry readout (altitude, velocity, acceleration)",
-        "Fuel burn control and thrust vector adjustment"
-      ]
-    },
-    {
-      id: "screen-time-blocker",
-      title: "Screen Time Blocker",
-      category: "devtools",
-      featured: false,
-      badge: "Productivity App",
-      tagline: "Distraction blocker and screen time tracker for focused work sessions.",
-      description: "Productivity tool designed to limit distracting applications, track active work sessions, and encourage focused deep work.",
-      longDescription: "Features configurable session timers, site/app blocking schedules, and weekly screen time reports.",
-      repoUrl: "https://github.com/sarwesv/portfolio",
-      demoUrl: "https://sarwesv.github.io/portfolio/",
-      image: "assets/images/screen_time_blocker.png",
-      tags: ["Swift", "SwiftUI", "HTML5", "Productivity", "Timer"],
-      metrics: [
-        { label: "Platform", value: "macOS / Web" },
-        { label: "Focus Timer", value: "Pomodoro & Custom" }
-      ],
-      features: [
-        "Customizable work and break interval timers",
-        "Visual progress charts for daily focus goals"
-      ]
-    },
-    {
       id: "capital-quiz",
       title: "Capital Quiz",
       category: "web",
-      featured: false,
-      badge: "Educational",
+      featured: true,
+      badge: "Educational Quiz",
       tagline: "World and state capital quiz game with score leaderboard.",
       description: "Engaging quiz game testing capital city knowledge with interactive visual cards and progress indicators.",
       longDescription: "Test your trivia skills across world and national capital cities. Simple, intuitive UI designed for fast mobile and desktop play.",
       repoUrl: "https://github.com/sarwesv/Capitalquiz",
       demoUrl: "https://sarwesv.github.io/Capitalquiz/",
       image: "assets/images/capital_quiz.png",
-      tags: ["JavaScript", "HTML5", "CSS3", "Trivia"],
+      tags: ["JavaScript", "HTML5", "CSS3", "Trivia", "Quiz"],
       metrics: [
         { label: "Interface", value: "Responsive" },
         { label: "Deploy", value: "GitHub Pages" }
@@ -286,7 +194,7 @@ const PORTFOLIO_DATA = {
       year: "2026",
       title: "Active Developer & Open Source Creator",
       company: "GitHub (sarwesv)",
-      description: "Published 10+ web applications, developer tools, and interactive games hosted on GitHub Pages."
+      description: "Published web applications, developer tools, and interactive games hosted on GitHub Pages."
     }
   ]
 };
