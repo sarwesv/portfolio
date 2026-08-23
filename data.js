@@ -52,30 +52,6 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "savings-tracker",
-      title: "Savings Plan Tracker & Invoice",
-      category: "fullstack",
-      featured: true,
-      badge: "Financial App",
-      tagline: "Comprehensive financial savings tracking and automated invoice generator.",
-      description: "A web app for tracking multi-tier savings goals, managing recurring ledgers, and building custom invoices with exportable summary data.",
-      longDescription: "VaultCraft Savings Plan Tracker enables users to monitor financial targets, log transactions, calculate progress metrics, and generate formatted invoices on demand.",
-      repoUrl: "https://github.com/sarwesv/savings-plan-tracker-and-invoice",
-      demoUrl: "https://sarwesv.github.io/savings-plan-tracker-and-invoice/",
-      image: "assets/images/savings.png",
-      tags: ["JavaScript", "Local Storage", "Finance", "Invoice", "Data Visualization"],
-      metrics: [
-        { label: "Data Persistence", value: "Local Storage" },
-        { label: "Export Format", value: "CSV & Ledger" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Dynamic savings target calculation and breakdown charts",
-        "Customizable invoice generation with items, taxes, and totals",
-        "Export and import transaction ledgers in CSV format"
-      ]
-    },
-    {
       id: "invoice-app",
       title: "Invoice Application",
       category: "fullstack",
