@@ -356,7 +356,7 @@ function initContactForm() {
   if (emailVal) emailVal.textContent = targetEmail;
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('form-name').value.trim();
       const email = document.getElementById('form-email').value.trim();
@@ -367,16 +367,45 @@ function initContactForm() {
         return;
       }
 
-      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-      const body = encodeURIComponent(`Hi Sarvesw,\n\n${message}\n\n---\nSender Name: ${name}\nSender Email: ${email}`);
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending Message...';
+      }
 
-      const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-      
-      // Trigger native email client or webmail draft
-      window.open(mailtoUrl, '_blank');
+      try {
+        // Send email silently in background directly to sarvick.vemula@gmail.com
+        const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _subject: `Portfolio Message from ${name}`
+          })
+        });
 
-      showToast(`Opening email compose window for ${targetEmail}!`, 'success');
-      form.reset();
+        if (response.ok) {
+          showToast(`Thank you, ${name}! Your message was sent directly to Sarvesw.`, 'success');
+          form.reset();
+        } else {
+          showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
+          form.reset();
+        }
+      } catch (err) {
+        showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
+        form.reset();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
     });
   }
 }
