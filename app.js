@@ -352,7 +352,8 @@ function initTimelineSection() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const emailVal = document.getElementById('contact-email-text');
-  if (emailVal) emailVal.textContent = PORTFOLIO_DATA.profile.email;
+  const targetEmail = PORTFOLIO_DATA.profile.email;
+  if (emailVal) emailVal.textContent = targetEmail;
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -366,7 +367,15 @@ function initContactForm() {
         return;
       }
 
-      showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body = encodeURIComponent(`Hi Sarvesw,\n\n${message}\n\n---\nSender Name: ${name}\nSender Email: ${email}`);
+
+      const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+      
+      // Trigger native email client or webmail draft
+      window.open(mailtoUrl, '_blank');
+
+      showToast(`Opening email compose window for ${targetEmail}!`, 'success');
       form.reset();
     });
   }
