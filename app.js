@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimelineSection();
   initContactForm();
   initScrollEffects();
+  initModalEvents();
 });
 
 /* --------------------------------------------------------------------------
@@ -227,16 +228,55 @@ window.openProjectModal = function(projectId) {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
         Launch GitHub Pages Demo
       </a>
+      <button type="button" onclick="closeProjectModal()" class="btn btn-secondary" style="flex: 0 0 auto;">
+        Close Details
+      </button>
     </div>
   `;
 
-  modal.showModal();
+  document.body.style.overflow = 'hidden';
+  if (typeof modal.showModal === 'function') {
+    modal.showModal();
+  } else {
+    modal.setAttribute('open', '');
+  }
 };
 
 window.closeProjectModal = function() {
   const modal = document.getElementById('project-modal');
-  if (modal) modal.close();
+  document.body.style.overflow = '';
+  if (modal) {
+    if (typeof modal.close === 'function') {
+      try { modal.close(); } catch(e) { modal.removeAttribute('open'); }
+    } else {
+      modal.removeAttribute('open');
+    }
+  }
 };
+
+function initModalEvents() {
+  const modal = document.getElementById('project-modal');
+  if (!modal) return;
+
+  // Backdrop click listener (clicks outside modal box)
+  modal.addEventListener('click', (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isInside = (
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom
+    );
+    if (!isInside) {
+      closeProjectModal();
+    }
+  });
+
+  // ESC key listener for HTML5 dialog cancel
+  modal.addEventListener('cancel', () => {
+    document.body.style.overflow = '';
+  });
+}
 
 function escapeHtml(text) {
   return text.replace(/&/g, "&amp;")
