@@ -11,7 +11,7 @@ const PORTFOLIO_DATA = {
     githubPagesRoot: "https://sarwesv.github.io",
     email: "sarwesv@github.com",
     stats: [
-      { label: "Repositories", value: "11+" },
+      { label: "Repositories", value: "14+" },
       { label: "Active Deployments", value: "10+" },
       { label: "Primary Language", value: "JavaScript" },
       { label: "GitHub Pages", value: "Live" }
@@ -124,6 +124,74 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
+      id: "driving-sim",
+      title: "Drive - Driving Simulator",
+      category: "web",
+      featured: true,
+      badge: "Physics Simulation",
+      tagline: "2D driving simulator web app featuring physics vectors and traffic logic.",
+      description: "Interactive browser driving simulator with vehicle controls, traffic AI steering, collision detection, and customizable road layouts.",
+      longDescription: "Built with modular physics scripts (physics.js, traffic.js, audio.js) for realistic acceleration, turning friction, and autonomous vehicle steering.",
+      repoUrl: "https://github.com/sarwesv/portfolio",
+      demoUrl: "https://sarwesv.github.io/portfolio/",
+      image: "assets/images/drive.png",
+      tags: ["JavaScript", "HTML5 Canvas", "Physics Vector", "Traffic AI", "Game Dev"],
+      metrics: [
+        { label: "Physics Engine", value: "Custom Vector" },
+        { label: "Frame Rate", value: "60 FPS" },
+        { label: "Audio", value: "Engine Sound FX" }
+      ],
+      features: [
+        "Vehicle physics model with acceleration, braking, and drift vectors",
+        "Autonomous traffic AI steering and obstacle avoidance",
+        "Synthesized Web Audio engine sound effects and collision sounds"
+      ]
+    },
+    {
+      id: "rocket-sim",
+      title: "Rocket Flight Simulator",
+      category: "web",
+      featured: false,
+      badge: "Simulation",
+      tagline: "Interactive rocket launch and orbital mechanics flight simulator.",
+      description: "Spaceflight simulator modeling rocket thrust, gravity vectors, fuel consumption, and flight trajectory telemetries.",
+      longDescription: "Features live velocity graphs, fuel gauge displays, staging controls, and orbital altitude tracking.",
+      repoUrl: "https://github.com/sarwesv/portfolio",
+      demoUrl: "https://sarwesv.github.io/portfolio/",
+      image: "assets/images/rocket_simulator.png",
+      tags: ["JavaScript", "HTML5 Canvas", "Orbital Mechanics", "Physics"],
+      metrics: [
+        { label: "Telemetry", value: "Real-time" },
+        { label: "Physics", value: "Gravity & Thrust" }
+      ],
+      features: [
+        "Real-time flight telemetry readout (altitude, velocity, acceleration)",
+        "Fuel burn control and thrust vector adjustment"
+      ]
+    },
+    {
+      id: "screen-time-blocker",
+      title: "Screen Time Blocker",
+      category: "devtools",
+      featured: false,
+      badge: "Productivity App",
+      tagline: "Distraction blocker and screen time tracker for focused work sessions.",
+      description: "Productivity tool designed to limit distracting applications, track active work sessions, and encourage focused deep work.",
+      longDescription: "Features configurable session timers, site/app blocking schedules, and weekly screen time reports.",
+      repoUrl: "https://github.com/sarwesv/portfolio",
+      demoUrl: "https://sarwesv.github.io/portfolio/",
+      image: "assets/images/screen_time_blocker.png",
+      tags: ["Swift", "SwiftUI", "HTML5", "Productivity", "Timer"],
+      metrics: [
+        { label: "Platform", value: "macOS / Web" },
+        { label: "Focus Timer", value: "Pomodoro & Custom" }
+      ],
+      features: [
+        "Customizable work and break interval timers",
+        "Visual progress charts for daily focus goals"
+      ]
+    },
+    {
       id: "capital-quiz",
       title: "Capital Quiz",
       category: "web",
@@ -209,50 +277,6 @@ const PORTFOLIO_DATA = {
       features: [
         "HTML5 2D Canvas rendering loop",
         "High score tracking and speed level progression"
-      ]
-    },
-    {
-      id: "prodigymind",
-      title: "Prodigymind Learning Platform",
-      category: "web",
-      featured: false,
-      badge: "Learning Tool",
-      tagline: "Interactive learning workspace with custom sound effects and visual feedback.",
-      description: "Educational web application incorporating custom audio sound effects (SFX) and engaging UI elements to make learning interactive.",
-      longDescription: "Prodigymind combines interactive lessons, sound effect feedback, and structured modules to create an immersive learning atmosphere.",
-      repoUrl: "https://github.com/sarwesv/Prodigymind",
-      demoUrl: "https://sarwesv.github.io/Prodigymind/",
-      image: "assets/images/us_state_capitals_quiz.png",
-      tags: ["JavaScript", "HTML5", "Web Audio API", "Education"],
-      metrics: [
-        { label: "Audio", value: "Custom SFX" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Custom audio sound effects for key interactions",
-        "Interactive challenge modules and progress cards"
-      ]
-    },
-    {
-      id: "requestall",
-      title: "RequestAll Developer Tool",
-      category: "devtools",
-      featured: false,
-      badge: "API Utility",
-      tagline: "Batch HTTP request utility for testing and inspecting API endpoints.",
-      description: "A developer utility for firing concurrent API requests, analyzing response payloads, and inspecting HTTP headers.",
-      longDescription: "RequestAll helps developers test multiple API endpoints simultaneously, benchmark response times, and format JSON output.",
-      repoUrl: "https://github.com/sarwesv/requestall",
-      demoUrl: "https://sarwesv.github.io/requestall/",
-      image: "assets/images/teleprompter.png",
-      tags: ["JavaScript", "Fetch API", "Async", "API Testing"],
-      metrics: [
-        { label: "Concurrent Req", value: "Supported" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Batch request dispatcher using async/await",
-        "Response status code and latency breakdown"
       ]
     }
   ],
