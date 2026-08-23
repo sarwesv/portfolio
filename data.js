@@ -64,7 +64,7 @@ const PORTFOLIO_DATA = {
       longDescription: "Streamlined invoice management application supporting line-item calculations, client management, tax adjustments, and printable clean invoice templates.",
       repoUrl: "https://github.com/sarwesv/invoice",
       demoUrl: "https://sarwesv.github.io/invoice/",
-      image: "assets/images/invoice.png",
+      image: "assets/images/invoice.svg",
       tags: ["JavaScript", "HTML5", "CSS3", "Invoice Generator", "Print CSS"],
       metrics: [
         { label: "Load Time", value: "< 100ms" },
