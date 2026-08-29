@@ -1,6 +1,6 @@
 const PORTFOLIO_DATA = {
   profile: {
-    name: "Sarvesw",
+    name: "sarwesv",
     handle: "sarwesv",
     pronouns: "he/him",
     title: "Web Developer & Coder",

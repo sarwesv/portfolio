@@ -391,7 +391,7 @@ function initContactForm() {
         });
 
         if (response.ok) {
-          showToast(`Thank you, ${name}! Your message was sent directly to Sarvesw.`, 'success');
+          showToast(`Thank you, ${name}! Your message was sent directly to sarwesv.`, 'success');
           form.reset();
         } else {
           showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
