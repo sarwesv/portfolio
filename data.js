@@ -27,7 +27,32 @@ const PORTFOLIO_DATA = {
     { id: "web", name: "Web Applications & Games" }
   ],
 
-  projects: [],
+  projects: [
+    {
+      id: "invoice-app",
+      title: "Invoice & Savings App",
+      category: "fullstack",
+      featured: true,
+      badge: "Featured App",
+      tagline: "VaultCraft Smart Savings Planner & Goal Tracker.",
+      description: "Simple, fun savings goal planner and tracker designed for tracking savings goals, deposits, and growth targets.",
+      longDescription: "VaultCraft is a web application allowing users to track savings goals, log deposits, set growth targets, and manage activity logs with privacy controls.",
+      repoUrl: "https://github.com/sarwesv/invoice",
+      demoUrl: "https://sarwesv.github.io/invoice/",
+      image: "assets/images/invoice.svg",
+      tags: ["JavaScript", "HTML5", "CSS3", "Savings App", "Firebase"],
+      metrics: [
+        { label: "Storage", value: "LocalStorage" },
+        { label: "Privacy", value: "Enabled" },
+        { label: "Deploy", value: "GitHub Pages" }
+      ],
+      features: [
+        "Interactive savings goal progress tracking with visual progress bars",
+        "Direct email background form integration",
+        "Permanent account privacy mode"
+      ]
+    }
+  ],
 
   skills: [
     {
