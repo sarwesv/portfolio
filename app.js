@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
+  initMobileMenu();
   initProfileData();
   initProjectsSection();
   initSkillsSection();
@@ -12,6 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initModalEvents();
 });
+
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (toggleBtn && navLinks) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+        navLinks.classList.remove('show');
+      }
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+      });
+    });
+  }
+}
 
 /* --------------------------------------------------------------------------
    1. Theme Toggler (Dark / Light Mode)
