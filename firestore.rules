@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /newsletter_subscribers/{subscriberId} {
+      allow create, update: if request.resource.data.email is string
+                           && request.resource.data.email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+      allow read: if false;
+    }
+  }
+}

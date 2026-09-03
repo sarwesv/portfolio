@@ -1,0 +1,37 @@
+[debug] [2026-09-03T22:29:06.281Z] ----------------------------------------------------------------------
+[debug] [2026-09-03T22:29:06.283Z] Command:       /usr/local/bin/node /Users/sarv/.npm/_npx/ba4f1959e38407b5/node_modules/.bin/firebase deploy --only firestore:rules --project sarwesv-portfolio-app
+[debug] [2026-09-03T22:29:06.283Z] CLI Version:   15.29.0
+[debug] [2026-09-03T22:29:06.283Z] Platform:      darwin
+[debug] [2026-09-03T22:29:06.283Z] Node Version:  v24.13.1
+[debug] [2026-09-03T22:29:06.283Z] Detected Agent: antigravity
+[debug] [2026-09-03T22:29:06.283Z] Time:          Thu Sep 03 2026 18:29:06 GMT-0400 (Eastern Daylight Time)
+[debug] [2026-09-03T22:29:06.284Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-03T22:29:07.218Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-03T22:29:07.218Z] > authorizing via signed-in user (mogalt@gmail.com)
+[debug] [2026-09-03T22:29:07.218Z] [iam] checking project sarwesv-portfolio-app for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-09-03T22:29:07.224Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:07.224Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:07.225Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions [none]
+[debug] [2026-09-03T22:29:07.225Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions  x-goog-user-project=sarwesv-portfolio-app
+[debug] [2026-09-03T22:29:07.225Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-09-03T22:29:08.252Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions 200
+[debug] [2026-09-03T22:29:08.252Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'sarwesv-portfolio-app'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-09-03T22:29:08.255Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:08.255Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:08.255Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com [none]
+[debug] [2026-09-03T22:29:08.255Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com  x-goog-user-project=sarwesv-portfolio-app
+[debug] [2026-09-03T22:29:09.578Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com 200
+[debug] [2026-09-03T22:29:09.579Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com [omitted]
+[warn] ⚠  firestore: missing required API firestore.googleapis.com. Enabling now... 
+[debug] [2026-09-03T22:29:09.580Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:09.580Z] Checked if tokens are valid: true, expires at: 1788478102721
+[debug] [2026-09-03T22:29:09.580Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com:enable [none]
+[debug] [2026-09-03T22:29:09.580Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com:enable  x-goog-user-project=sarwesv-portfolio-app
+[debug] [2026-09-03T22:29:11.097Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com:enable 200
+[debug] [2026-09-03T22:29:11.097Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/sarwesv-portfolio-app/services/firestore.googleapis.com:enable [omitted]
