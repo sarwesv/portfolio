@@ -457,11 +457,86 @@ function initTimelineSection() {
 /* --------------------------------------------------------------------------
    6. Contact Form & Email Handler
    -------------------------------------------------------------------------- */
+function validateRealEmail(emailStr) {
+  if (!emailStr) return { valid: false, error: 'Email address is required.' };
+  
+  const email = emailStr.trim().toLowerCase();
+
+  // Basic RFC email syntax check
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
+  if (!emailRegex.test(email)) {
+    return { valid: false, error: 'Please enter a properly formatted email address (e.g. name@gmail.com).' };
+  }
+
+  const parts = email.split('@');
+  if (parts.length !== 2) return { valid: false, error: 'Email must contain exactly one @ symbol.' };
+
+  const [username, domain] = parts;
+  if (!username || !domain) return { valid: false, error: 'Email username or domain cannot be empty.' };
+
+  if (username.includes('..') || domain.includes('..')) {
+    return { valid: false, error: 'Email cannot contain consecutive dots.' };
+  }
+
+  // Block fake, disposable, temporary, and test email domains
+  const blockedDomains = [
+    'test.com', 'example.com', 'invalid.com', 'fake.com', 'dummy.com',
+    'tempmail.com', 'mailinator.com', '10minutemail.com', 'guerrillamail.com',
+    'throwawaymail.com', 'trashmail.com', 'yopmail.com', 'dispostable.com',
+    'sharklasers.com', 'getairmail.com', 'maildrop.cc', 'temp-mail.org',
+    'baddomain.com', 'noemail.com', 'email.com', 'asdf.com', 'qwerty.com',
+    'foo.com', 'bar.com', 'domain.com', 'testing.com', 'demo.com', 'test.org',
+    'fake.org', 'test.net', 'fake.net', 'sample.com'
+  ];
+
+  if (blockedDomains.includes(domain)) {
+    return { valid: false, error: 'Disposable, test, or fake email domains are not allowed. Please use your real email.' };
+  }
+
+  const domainParts = domain.split('.');
+  const tld = domainParts[domainParts.length - 1];
+
+  if (tld.length < 2) {
+    return { valid: false, error: 'Email extension is invalid. Please enter a real top-level domain.' };
+  }
+
+  const blockedTLDs = ['test', 'fake', 'invalid', 'local', 'example', 'dummy', 'temp'];
+  if (blockedTLDs.includes(tld)) {
+    return { valid: false, error: 'Invalid top-level domain extension. Please enter a real email.' };
+  }
+
+  return { valid: true };
+}
+
 function initContactForm() {
   const form = document.getElementById('contact-form');
+  const emailInput = document.getElementById('form-email');
+  const msgEl = document.getElementById('email-validation-msg');
   const emailVal = document.getElementById('contact-email-text');
   const targetEmail = PORTFOLIO_DATA.profile.email;
   if (emailVal) emailVal.textContent = targetEmail;
+
+  if (emailInput && msgEl) {
+    emailInput.addEventListener('input', () => {
+      const val = emailInput.value.trim();
+      if (!val) {
+        msgEl.textContent = '';
+        emailInput.style.borderColor = '';
+        return;
+      }
+
+      const res = validateRealEmail(val);
+      if (res.valid) {
+        msgEl.textContent = '✓ Valid email address!';
+        msgEl.style.color = '#10b981';
+        emailInput.style.borderColor = '#10b981';
+      } else {
+        msgEl.textContent = '✗ ' + res.error;
+        msgEl.style.color = '#ef4444';
+        emailInput.style.borderColor = '#ef4444';
+      }
+    });
+  }
 
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -475,6 +550,17 @@ function initContactForm() {
         return;
       }
 
+      // Enforce Real Email Validation
+      const emailRes = validateRealEmail(email);
+      if (!emailRes.valid) {
+        showToast(emailRes.error, 'warning');
+        if (emailInput) {
+          emailInput.focus();
+          emailInput.style.borderColor = '#ef4444';
+        }
+        return;
+      }
+
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
       if (submitBtn) {
@@ -483,7 +569,6 @@ function initContactForm() {
       }
 
       try {
-        // Send email silently in background via FormSubmit token 507bf8be6742e3efa2cab599ff6cb6fc
         const response = await fetch('https://formsubmit.co/ajax/507bf8be6742e3efa2cab599ff6cb6fc', {
           method: 'POST',
           headers: {
@@ -501,13 +586,19 @@ function initContactForm() {
         if (response.ok) {
           showToast(`Thank you, ${name}! Your message was sent directly to sarwesv.`, 'success');
           form.reset();
+          if (msgEl) msgEl.textContent = '';
+          if (emailInput) emailInput.style.borderColor = '';
         } else {
           showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
           form.reset();
+          if (msgEl) msgEl.textContent = '';
+          if (emailInput) emailInput.style.borderColor = '';
         }
       } catch (err) {
         showToast(`Thank you, ${name}! Your message has been sent.`, 'success');
         form.reset();
+        if (msgEl) msgEl.textContent = '';
+        if (emailInput) emailInput.style.borderColor = '';
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
