@@ -59,7 +59,7 @@
 .typing-cursor {
   display: inline-block;
   font-weight: 400;
-  color: var(--accent-cyan);
+  color: #ffffff;
   margin-left: 2px;
   animation: blinkCursor 0.75s infinite steps(2, start);
   user-select: none;
