@@ -694,27 +694,39 @@ function initNewsletterSection() {
 }
 
 window.handleGoogleNewsletterSignIn = async function() {
+  let googleEmail = '';
+  let googleName = 'Google Account User';
+
+  // 1. Try Firebase Google Auth Popup if initialized
   if (typeof auth !== 'undefined' && auth && typeof googleProvider !== 'undefined' && googleProvider) {
     try {
-      showToast('Connecting to Google Sign-In...', 'info');
       const result = await auth.signInWithPopup(googleProvider);
-      const user = result.user;
-      if (user && user.email) {
-        await subscribeToNewsletter(user.email, user.displayName || 'Google User', 'google');
+      if (result && result.user && result.user.email) {
+        googleEmail = result.user.email;
+        googleName = result.user.displayName || 'Google Account User';
       }
     } catch (error) {
-      console.warn('Google Auth popup notice:', error.message);
-      const promptEmail = prompt('Enter your Google email to subscribe to App Launch notifications:');
-      if (promptEmail) {
-        await subscribeToNewsletter(promptEmail, 'Google Subscriber', 'google_manual');
-      }
-    }
-  } else {
-    const promptEmail = prompt('Enter your email to subscribe to new app launch updates:');
-    if (promptEmail) {
-      await subscribeToNewsletter(promptEmail, 'Subscriber', 'manual');
+      console.log('Google Auth popup notice:', error.message);
     }
   }
+
+  // 2. Prompt for Google Account email if popup didn't return email automatically
+  if (!googleEmail) {
+    const input = prompt('Enter your Google Account email address to subscribe to sarwesv\'s App Launch Newsletter:');
+    if (!input) return;
+    googleEmail = input.trim();
+    googleName = googleEmail.split('@')[0];
+  }
+
+  // 3. Enforce Real Email Validation (reject fake domains & sarwesv@sarwesv.com)
+  const validation = validateRealEmail(googleEmail);
+  if (!validation.valid) {
+    showToast(validation.error, 'warning');
+    return;
+  }
+
+  // 4. Save subscriber & dispatch instant notification email to mogalt@gmail.com
+  await subscribeToNewsletter(googleEmail, googleName, 'google');
 };
 
 async function subscribeToNewsletter(email, displayName = 'Subscriber', authType = 'email') {
