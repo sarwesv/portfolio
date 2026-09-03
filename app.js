@@ -142,8 +142,7 @@ function renderProjects() {
 
   grid.innerHTML = filtered.map(proj => `
     <div class="project-card">
-      <div class="project-image-wrapper">
-        <img src="${proj.image}" alt="${proj.title}" class="project-img" loading="lazy" />
+      <div class="project-card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem 0.5rem;">
         <span class="project-badge">${proj.badge || proj.category.toUpperCase()}</span>
       </div>
       <div class="project-content">
@@ -183,7 +182,6 @@ window.openProjectModal = function(projectId) {
   if (!modal || !modalContent) return;
 
   modalContent.innerHTML = `
-    <img src="${proj.image}" alt="${proj.title}" class="modal-hero-img" />
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
       <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800;">${proj.title}</h2>
       <span class="project-badge">${proj.badge || proj.category.toUpperCase()}</span>
