@@ -462,7 +462,7 @@ function validateRealEmail(emailStr) {
   
   const email = emailStr.trim().toLowerCase();
 
-  // Basic RFC email syntax check
+  // Basic RFC syntax check
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/;
   if (!emailRegex.test(email)) {
     return { valid: false, error: 'Please enter a properly formatted email address (e.g. name@gmail.com).' };
@@ -474,35 +474,52 @@ function validateRealEmail(emailStr) {
   const [username, domain] = parts;
   if (!username || !domain) return { valid: false, error: 'Email username or domain cannot be empty.' };
 
-  if (username.includes('..') || domain.includes('..')) {
-    return { valid: false, error: 'Email cannot contain consecutive dots.' };
+  const domainParts = domain.split('.');
+  const domainPrefix = domainParts[0];
+  const tld = domainParts[domainParts.length - 1];
+
+  // 1. Block duplicate username and domain name (e.g., sarwesv@sarwesv.com, test@test.com)
+  if (username === domainPrefix || username.replace(/[^a-z0-9]/g, '') === domainPrefix.replace(/[^a-z0-9]/g, '')) {
+    return { valid: false, error: 'Username and domain cannot be identical. Please enter your real email address.' };
   }
 
-  // Block fake, disposable, temporary, and test email domains
+  // 2. Minimum length checks
+  if (username.length < 2 || domainPrefix.length < 2) {
+    return { valid: false, error: 'Please enter a valid email address.' };
+  }
+
+  // 3. Block fake, temporary, disposable, or test domains
   const blockedDomains = [
-    'test.com', 'example.com', 'invalid.com', 'fake.com', 'dummy.com',
+    'sarwesv.com', 'test.com', 'example.com', 'invalid.com', 'fake.com', 'dummy.com',
     'tempmail.com', 'mailinator.com', '10minutemail.com', 'guerrillamail.com',
     'throwawaymail.com', 'trashmail.com', 'yopmail.com', 'dispostable.com',
     'sharklasers.com', 'getairmail.com', 'maildrop.cc', 'temp-mail.org',
     'baddomain.com', 'noemail.com', 'email.com', 'asdf.com', 'qwerty.com',
     'foo.com', 'bar.com', 'domain.com', 'testing.com', 'demo.com', 'test.org',
-    'fake.org', 'test.net', 'fake.net', 'sample.com'
+    'fake.org', 'test.net', 'fake.net', 'sample.com', 'mysite.com', 'website.com'
   ];
 
-  if (blockedDomains.includes(domain)) {
-    return { valid: false, error: 'Disposable, test, or fake email domains are not allowed. Please use your real email.' };
+  if (blockedDomains.includes(domain) || blockedDomains.includes(domainPrefix + '.com')) {
+    return { valid: false, error: 'Please use a real email address (e.g. @gmail.com, @yahoo.com, @outlook.com).' };
   }
 
-  const domainParts = domain.split('.');
-  const tld = domainParts[domainParts.length - 1];
+  // 4. Recognized Major Real Email Providers & Educational/Government Extensions
+  const recognizedRealProviders = [
+    'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com',
+    'aol.com', 'protonmail.com', 'proton.me', 'zoho.com', 'gmx.com',
+    'live.com', 'msn.com', 'me.com', 'mac.com', 'comcast.net', 'verizon.net',
+    'sbcglobal.net', 'att.net', 'cox.net', 'charter.net', 'yandex.com',
+    'mail.ru', 'fastmail.com', 'tutanota.com', 'gmx.de', 'web.de'
+  ];
 
-  if (tld.length < 2) {
-    return { valid: false, error: 'Email extension is invalid. Please enter a real top-level domain.' };
-  }
+  const validEduGovTLDs = ['edu', 'gov', 'mil', 'ac.uk', 'edu.au', 'edu.in', 'org', 'io'];
 
-  const blockedTLDs = ['test', 'fake', 'invalid', 'local', 'example', 'dummy', 'temp'];
-  if (blockedTLDs.includes(tld)) {
-    return { valid: false, error: 'Invalid top-level domain extension. Please enter a real email.' };
+  const isRecognizedProvider = recognizedRealProviders.includes(domain);
+  const isValidEduGov = validEduGovTLDs.includes(tld);
+
+  // Require standard recognized email provider or valid institutional/company domain
+  if (!isRecognizedProvider && !isValidEduGov && tld === 'com' && domainPrefix.length < 4) {
+    return { valid: false, error: 'Please enter a valid, recognized email domain (e.g. @gmail.com, @outlook.com).' };
   }
 
   return { valid: true };
