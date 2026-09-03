@@ -280,19 +280,9 @@ body {
 }
 
 /* Buttons & Interactive Elements */
-button, input, select, textarea, .btn, .btn-primary, .btn-secondary, .btn-github, .btn-demo, .btn-icon, .tab-btn, .modal-close-btn {
-  box-sizing: border-box !important;
-  outline: none !important;
-  border-style: solid;
-  background-clip: padding-box;
-  -webkit-appearance: none;
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible, .btn:focus-visible, a:focus-visible {
-  outline: 2px solid var(--accent-cyan) !important;
-  outline-offset: 2px;
+button, input, select, textarea {
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -307,17 +297,24 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
   text-decoration: none;
   cursor: pointer;
   transition: all var(--transition-fast);
-  border: 1px solid transparent;
-  overflow: hidden;
+  border: none;
+  outline: none;
   position: relative;
   vertical-align: middle;
   line-height: 1.2;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-cyan) !important;
+  outline-offset: 2px;
 }
 
 .btn-primary {
   background: var(--gradient-primary);
   color: #ffffff;
-  border-color: transparent;
+  border: none;
   box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
 }
 
@@ -328,7 +325,7 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
 
 .btn-secondary {
   background: var(--surface-glass-card);
-  border-color: var(--border-glass-bright);
+  border: 1px solid var(--border-glass-bright);
   color: var(--text-main);
 }
 
@@ -341,7 +338,7 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
 .btn-github {
   background: rgba(36, 41, 46, 0.85);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .btn-github:hover {
@@ -353,7 +350,7 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
 .btn-demo {
   background: rgba(16, 185, 129, 0.15);
   color: var(--accent-emerald);
-  border-color: rgba(16, 185, 129, 0.35);
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 
 .btn-demo:hover {
