@@ -55,6 +55,21 @@
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Typewriter & Blinking Cursor Animation */
+.typing-cursor {
+  display: inline-block;
+  font-weight: 400;
+  color: var(--accent-cyan);
+  margin-left: 2px;
+  animation: blinkCursor 0.75s infinite steps(2, start);
+  user-select: none;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Light Mode Theme Overrides */
 [data-theme="light"] {
   --bg-primary: #f8fafc;

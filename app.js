@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileMenu();
+  initTypewriterEffect();
   initProfileData();
   initProjectsSection();
   initSkillsSection();
@@ -13,6 +14,55 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initModalEvents();
 });
+
+/* --------------------------------------------------------------------------
+   Typewriter Animation Controller
+   -------------------------------------------------------------------------- */
+function initTypewriterEffect() {
+  const element = document.getElementById('hero-typewriter');
+  if (!element) return;
+
+  const words = [
+    "sarwesv.",
+    "a Web Developer.",
+    "a Game Creator.",
+    "a 9-year-old Coder."
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 90;
+
+  element.textContent = '';
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      typingSpeed = 40;
+    } else {
+      charIndex++;
+      typingSpeed = 80 + Math.random() * 40;
+    }
+
+    element.textContent = currentWord.substring(0, charIndex);
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typingSpeed = 1800; // Pause at end of phrase
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typingSpeed = 350; // Pause before next phrase starts
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  type();
+}
 
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobile-menu-toggle-btn');
