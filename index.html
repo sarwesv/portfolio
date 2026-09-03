@@ -10,7 +10,6 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="sarwesv (he/him) — Portfolio" />
   <meta property="og:description" content="Just a 9-year-old who loves computers and coding. Showcase of web projects and GitHub Pages demos." />
-  <meta property="og:image" content="assets/images/ai_dashboard.jpg" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
@@ -31,17 +30,17 @@
   <header class="site-header">
     <div class="container">
       <nav class="navbar">
-        <a href="#hero" class="brand-logo">
+        <a href="index.html" class="brand-logo">
           <div class="logo-badge">S</div>
           <span>sarwesv</span>
         </a>
 
         <ul class="nav-links">
-          <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#projects" class="nav-link">Projects Showcase</a></li>
-          <li><a href="#skills" class="nav-link">Skills & Stack</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="projects.html" class="nav-link">Projects Showcase</a></li>
+          <li><a href="skills.html" class="nav-link">Skills & Stack</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -68,7 +67,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero-section">
+  <section class="hero-section">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
@@ -87,15 +86,14 @@
           </p>
 
           <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">
+            <a href="projects.html" class="btn btn-primary">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              Explore Projects
+              Explore All Projects
             </a>
-            <a id="github-pages-btn" href="https://sarwesv.github.io" target="_blank" rel="noopener" class="btn btn-demo">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              GitHub Pages Demos
+            <a href="skills.html" class="btn btn-secondary">
+              View Skills & Stack
             </a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <a href="contact.html" class="btn btn-demo">Get In Touch</a>
           </div>
 
           <div id="hero-stats-container" class="hero-stats-grid">
@@ -118,7 +116,7 @@
             <div class="code-snippet-box">
               <pre><code>// Featured Stack
 const engineer = {
-  stack: ["TypeScript", "React", "Node", "Python"],
+  stack: ["JavaScript", "HTML5", "CSS3", "Firebase"],
   hosting: "GitHub Pages & Cloud Edge",
   status: "Ready for deployment 🚀"
 };</code></pre>
@@ -129,149 +127,61 @@ const engineer = {
     </div>
   </section>
 
-  <!-- Projects Showcase Section -->
-  <section id="projects" class="section">
+  <!-- Featured Projects Teaser Section -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Portfolio Showcase</span>
-        <h2 class="section-title">Featured Projects & Live Demos</h2>
-        <p class="section-description">
-          Each project below includes direct access links for the open-source <strong>Git Repository</strong> and the live hosted <strong>GitHub Pages</strong> site.
-        </p>
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-subtitle">Featured Highlights</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <a href="projects.html" class="btn btn-secondary btn-sm">
+          View All Projects &rarr;
+        </a>
       </div>
 
-      <!-- Controls: Category Filter Tabs & Search -->
-      <div class="projects-controls">
-        <div id="category-tabs" class="filter-tabs">
-          <!-- Dynamically populated from data.js -->
-        </div>
-
-        <div class="search-box">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, tech, or topic..." />
-        </div>
-      </div>
-
-      <!-- Projects Grid -->
-      <div id="projects-grid" class="projects-grid">
-        <!-- Dynamically rendered project cards -->
+      <!-- Featured Projects Preview Grid -->
+      <div id="home-featured-grid" class="projects-grid">
+        <!-- Dynamically rendered top featured projects -->
       </div>
     </div>
   </section>
 
-  <!-- Skills & Tech Stack Section -->
-  <section id="skills" class="section" style="background: rgba(0,0,0,0.15);">
+  <!-- Quick Nav Sections Grid -->
+  <section class="section" style="background: rgba(0,0,0,0.15);">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Technical Proficiency</span>
-        <h2 class="section-title">Skills & Technologies</h2>
-        <p class="section-description">
-          Core technical competencies across frontend engineering, backend architecture, cloud infrastructure, and AI tools.
-        </p>
+        <span class="section-subtitle">Explore Portfolio</span>
+        <h2 class="section-title">Discover More</h2>
       </div>
 
-      <div id="skills-grid" class="skills-grid">
-        <!-- Dynamically injected from data.js -->
-      </div>
-    </div>
-  </section>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <a href="skills.html" class="project-card" style="padding: 2rem; text-decoration: none;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.5rem;">Skills & Technologies</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Explore technical proficiency, tools, and libraries used to build responsive web apps and games.
+          </p>
+          <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;">Explore Skills &rarr;</span>
+        </a>
 
-  <!-- Experience / Timeline Section -->
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Career Path</span>
-        <h2 class="section-title">Work Experience & Milestones</h2>
-        <p class="section-description">
-          A summary of professional roles, open source contributions, and engineering achievements.
-        </p>
-      </div>
+        <a href="experience.html" class="project-card" style="padding: 2rem; text-decoration: none;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.5rem;">Career & Milestones</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+            View project milestones, open-source releases, and personal coding achievements.
+          </p>
+          <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;">View Timeline &rarr;</span>
+        </a>
 
-      <div id="timeline-container" class="timeline-container">
-        <!-- Dynamically injected timeline items -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section" style="background: rgba(0,0,0,0.15);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Connect With Me</span>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-description">
-          Interested in collaborating on a project or discussing engineering opportunities? Drop a message below or connect directly!
-        </p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info-card">
-          <div>
-            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Let's Build Together</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-              You can find all project repositories and live GitHub Pages deployments on GitHub. Feel free to explore, star repos, or submit pull requests.
-            </p>
-          </div>
-
-          <div class="contact-links-list">
-            <a href="https://github.com/sarwesv" target="_blank" rel="noopener" class="contact-link-item">
-              <div class="contact-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <div>
-                <div style="font-weight: 700;">Git Repositories (GitHub)</div>
-                <div style="font-size: 0.85rem; color: var(--text-muted);">github.com/sarwesv</div>
-              </div>
-            </a>
-
-            <a href="https://sarwesv.github.io" target="_blank" rel="noopener" class="contact-link-item">
-              <div class="contact-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              </div>
-              <div>
-                <div style="font-weight: 700;">GitHub Pages Live Site</div>
-                <div style="font-size: 0.85rem; color: var(--text-muted);">sarwesv.github.io</div>
-              </div>
-            </a>
-
-            <div class="contact-link-item" onclick="copyEmailToClipboard()" style="cursor: pointer;">
-              <div class="contact-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </div>
-              <div>
-                <div style="font-weight: 700;">Direct Email</div>
-                <div id="contact-email-text" style="font-size: 0.85rem; color: var(--accent-cyan);">mogalt@gmail.com</div>
-              </div>
-            </div>
-          </div>
-
-          <button onclick="copyEmailToClipboard()" class="btn btn-secondary btn-sm" style="width: 100%;">
-            Copy Email Address
-          </button>
-        </div>
-
-        <div class="contact-form-card">
-          <form id="contact-form">
-            <div class="form-group">
-              <label for="form-name" class="form-label">Your Name</label>
-              <input type="text" id="form-name" class="form-control" placeholder="Enter your name" required />
-            </div>
-
-            <div class="form-group">
-              <label for="form-email" class="form-label">Your Email</label>
-              <input type="email" id="form-email" class="form-control" placeholder="Enter your email address" required />
-            </div>
-
-            <div class="form-group">
-              <label for="form-message" class="form-label">Message</label>
-              <textarea id="form-message" class="form-control" placeholder="Hi sarwesv, I'd like to connect..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
-              Send Message
-            </button>
-          </form>
-        </div>
+        <a href="contact.html" class="project-card" style="padding: 2rem; text-decoration: none;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">💬</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.5rem;">Get In Touch</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Send a message or connect directly via GitHub repositories and direct email.
+          </p>
+          <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;">Contact Me &rarr;</span>
+        </a>
       </div>
     </div>
   </section>
@@ -307,7 +217,8 @@ const engineer = {
         <div class="footer-links">
           <a href="https://github.com/sarwesv" target="_blank" rel="noopener" class="footer-link">Git Repositories</a>
           <a href="https://sarwesv.github.io" target="_blank" rel="noopener" class="footer-link">GitHub Pages</a>
-          <a href="#hero" class="footer-link">Back to Top ↑</a>
+          <a href="projects.html" class="footer-link">Projects</a>
+          <a href="contact.html" class="footer-link">Contact</a>
         </div>
         <div style="font-size: 0.8rem; color: var(--text-dim);">
           &copy; 2026 sarwesv. All rights reserved.
