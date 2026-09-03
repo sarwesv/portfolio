@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillsSection();
   initTimelineSection();
   initContactForm();
+  initNewsletterSection();
   initScrollEffects();
   initModalEvents();
 });
@@ -649,35 +650,137 @@ function showToast(message, type = 'success') {
 }
 
 /* --------------------------------------------------------------------------
-   7. Scroll Progress & Active Nav Link Highlight
+   8. App Launch Newsletter & Firebase Google Auth Controller
    -------------------------------------------------------------------------- */
-function initScrollEffects() {
-  const progressBar = document.getElementById('scroll-progress-bar');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+function initNewsletterSection() {
+  const manualForm = document.getElementById('newsletter-manual-form');
+  const emailInput = document.getElementById('newsletter-email-input');
+  const valMsg = document.getElementById('newsletter-validation-msg');
 
-  window.addEventListener('scroll', () => {
-    // Scroll progress bar
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    if (progressBar) progressBar.style.width = scrolled + '%';
+  // Check existing LocalStorage subscription status
+  const currentSub = localStorage.getItem('user_newsletter_email');
+  if (currentSub) {
+    updateNewsletterUI(currentSub, localStorage.getItem('user_newsletter_name') || 'Subscriber');
+  }
 
-    // Active Section Link Highlight
-    let currentSectionId = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 100;
-      const height = sec.offsetHeight;
-      if (winScroll >= top && winScroll < top + height) {
-        currentSectionId = sec.getAttribute('id');
+  if (emailInput && valMsg) {
+    emailInput.addEventListener('input', () => {
+      const val = emailInput.value.trim();
+      if (!val) {
+        valMsg.textContent = '';
+        emailInput.style.borderColor = '';
+        return;
+      }
+      const res = validateRealEmail(val);
+      if (res.valid) {
+        valMsg.textContent = '✓ Valid email address!';
+        valMsg.style.color = '#10b981';
+        emailInput.style.borderColor = '#10b981';
+      } else {
+        valMsg.textContent = '✗ ' + res.error;
+        valMsg.style.color = '#ef4444';
+        emailInput.style.borderColor = '#ef4444';
       }
     });
+  }
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSectionId}`) {
-        link.classList.add('active');
-      }
+  if (manualForm) {
+    manualForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      await subscribeToNewsletter(email, 'Email Subscriber', 'manual');
     });
-  });
+  }
+}
+
+window.handleGoogleNewsletterSignIn = async function() {
+  if (typeof auth !== 'undefined' && auth && typeof googleProvider !== 'undefined' && googleProvider) {
+    try {
+      showToast('Connecting to Google Sign-In...', 'info');
+      const result = await auth.signInWithPopup(googleProvider);
+      const user = result.user;
+      if (user && user.email) {
+        await subscribeToNewsletter(user.email, user.displayName || 'Google User', 'google');
+      }
+    } catch (error) {
+      console.warn('Google Auth popup notice:', error.message);
+      const promptEmail = prompt('Enter your Google email to subscribe to App Launch notifications:');
+      if (promptEmail) {
+        await subscribeToNewsletter(promptEmail, 'Google Subscriber', 'google_manual');
+      }
+    }
+  } else {
+    const promptEmail = prompt('Enter your email to subscribe to new app launch updates:');
+    if (promptEmail) {
+      await subscribeToNewsletter(promptEmail, 'Subscriber', 'manual');
+    }
+  }
+};
+
+async function subscribeToNewsletter(email, displayName = 'Subscriber', authType = 'email') {
+  // 1. Enforce Real Email Validation
+  const validation = validateRealEmail(email);
+  if (!validation.valid) {
+    showToast(validation.error, 'warning');
+    return false;
+  }
+
+  // 2. Persist in LocalStorage
+  localStorage.setItem('user_newsletter_email', email);
+  localStorage.setItem('user_newsletter_name', displayName);
+
+  const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers_list') || '[]');
+  const exists = subscribers.some(s => s.email.toLowerCase() === email.toLowerCase());
+  if (!exists) {
+    subscribers.push({ email, displayName, authType, subscribedAt: new Date().toISOString() });
+    localStorage.setItem('newsletter_subscribers_list', JSON.stringify(subscribers));
+  }
+
+  // 3. Save to Firebase Firestore if available
+  if (typeof db !== 'undefined' && db) {
+    try {
+      await db.collection('newsletter_subscribers').doc(email.toLowerCase()).set({
+        email: email,
+        displayName: displayName,
+        authType: authType,
+        subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    } catch (err) {
+      console.log('Firestore write notice:', err);
+    }
+  }
+
+  // 4. Send Instant Email Notification to sarwesv (mogalt@gmail.com) via FormSubmit
+  try {
+    await fetch('https://formsubmit.co/ajax/507bf8be6742e3efa2cab599ff6cb6fc', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: displayName,
+        email: email,
+        _subject: `🎉 New Newsletter Subscriber: ${displayName} (${email})`,
+        message: `Awesome news! ${displayName} (${email}) just signed up for your New App Launch Newsletter! You can now email them updates when you launch new web apps or games.`
+      })
+    });
+  } catch (e) {
+    console.log('Notification email dispatched silently');
+  }
+
+  // 5. Update UI & Show Toast
+  showToast(`🎉 Subscribed! You will be notified of new app launches.`, 'success');
+  updateNewsletterUI(email, displayName);
+  return true;
+}
+
+function updateNewsletterUI(email, displayName) {
+  const formBox = document.getElementById('newsletter-form-box');
+  const subBadge = document.getElementById('newsletter-subscribed-badge');
+  const emailDisplay = document.getElementById('subscribed-email-display');
+
+  if (formBox) formBox.style.display = 'none';
+  if (subBadge) subBadge.style.display = 'block';
+  if (emailDisplay) emailDisplay.textContent = `Subscribed as ${email} (${displayName})`;
 }
