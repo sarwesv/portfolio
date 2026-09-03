@@ -653,80 +653,106 @@ function showToast(message, type = 'success') {
    8. App Launch Newsletter & Firebase Google Auth Controller
    -------------------------------------------------------------------------- */
 function initNewsletterSection() {
-  const manualForm = document.getElementById('newsletter-manual-form');
-  const emailInput = document.getElementById('newsletter-email-input');
-  const valMsg = document.getElementById('newsletter-validation-msg');
-
-  // Check existing LocalStorage subscription status
   const currentSub = localStorage.getItem('user_newsletter_email');
   if (currentSub) {
-    updateNewsletterUI(currentSub, localStorage.getItem('user_newsletter_name') || 'Subscriber');
+    updateNewsletterUI(currentSub, localStorage.getItem('user_newsletter_name') || 'Google Account');
   }
 
-  if (emailInput && valMsg) {
-    emailInput.addEventListener('input', () => {
-      const val = emailInput.value.trim();
+  const googleForm = document.getElementById('google-signin-form');
+  const googleEmailInput = document.getElementById('google-account-email');
+  const googleValMsg = document.getElementById('google-modal-validation-msg');
+
+  if (googleEmailInput && googleValMsg) {
+    googleEmailInput.addEventListener('input', () => {
+      const val = googleEmailInput.value.trim();
       if (!val) {
-        valMsg.textContent = '';
-        emailInput.style.borderColor = '';
+        googleValMsg.textContent = '';
+        googleEmailInput.style.borderColor = '';
         return;
       }
+
       const res = validateRealEmail(val);
       if (res.valid) {
-        valMsg.textContent = '✓ Valid email address!';
-        valMsg.style.color = '#10b981';
-        emailInput.style.borderColor = '#10b981';
+        googleValMsg.textContent = '✓ Valid Google Account email!';
+        googleValMsg.style.color = '#10b981';
+        googleEmailInput.style.borderColor = '#10b981';
       } else {
-        valMsg.textContent = '✗ ' + res.error;
-        valMsg.style.color = '#ef4444';
-        emailInput.style.borderColor = '#ef4444';
+        googleValMsg.textContent = '✗ ' + res.error;
+        googleValMsg.style.color = '#ef4444';
+        googleEmailInput.style.borderColor = '#ef4444';
       }
     });
   }
 
-  if (manualForm) {
-    manualForm.addEventListener('submit', async (e) => {
+  if (googleForm) {
+    googleForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = emailInput.value.trim();
-      await subscribeToNewsletter(email, 'Email Subscriber', 'manual');
+      const email = googleEmailInput.value.trim();
+      const validation = validateRealEmail(email);
+
+      if (!validation.valid) {
+        showToast(validation.error, 'warning');
+        googleEmailInput.focus();
+        googleEmailInput.style.borderColor = '#ef4444';
+        return;
+      }
+
+      const name = email.split('@')[0];
+      closeGoogleModal();
+      await subscribeToNewsletter(email, name, 'google');
+    });
+  }
+
+  const googleModal = document.getElementById('google-signin-modal');
+  if (googleModal) {
+    googleModal.addEventListener('click', (e) => {
+      const rect = googleModal.getBoundingClientRect();
+      const isInside = (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      );
+      if (!isInside) {
+        closeGoogleModal();
+      }
+    });
+
+    googleModal.addEventListener('cancel', () => {
+      document.body.style.overflow = '';
     });
   }
 }
 
-window.handleGoogleNewsletterSignIn = async function() {
-  let googleEmail = '';
-  let googleName = 'Google Account User';
+window.handleGoogleNewsletterSignIn = function() {
+  const modal = document.getElementById('google-signin-modal');
+  const emailInput = document.getElementById('google-account-email');
+  const valMsg = document.getElementById('google-modal-validation-msg');
 
-  // 1. Try Firebase Google Auth Popup if initialized
-  if (typeof auth !== 'undefined' && auth && typeof googleProvider !== 'undefined' && googleProvider) {
+  if (modal) {
+    if (emailInput) {
+      emailInput.value = '';
+      emailInput.style.borderColor = '';
+    }
+    if (valMsg) valMsg.textContent = '';
+
+    document.body.style.overflow = 'hidden';
+    modal.showModal();
+
+    if (emailInput) emailInput.focus();
+  }
+};
+
+window.closeGoogleModal = function() {
+  const modal = document.getElementById('google-signin-modal');
+  if (modal) {
+    document.body.style.overflow = '';
     try {
-      const result = await auth.signInWithPopup(googleProvider);
-      if (result && result.user && result.user.email) {
-        googleEmail = result.user.email;
-        googleName = result.user.displayName || 'Google Account User';
-      }
-    } catch (error) {
-      console.log('Google Auth popup notice:', error.message);
+      modal.close();
+    } catch (e) {
+      modal.removeAttribute('open');
     }
   }
-
-  // 2. Prompt for Google Account email if popup didn't return email automatically
-  if (!googleEmail) {
-    const input = prompt('Enter your Google Account email address to subscribe to sarwesv\'s App Launch Newsletter:');
-    if (!input) return;
-    googleEmail = input.trim();
-    googleName = googleEmail.split('@')[0];
-  }
-
-  // 3. Enforce Real Email Validation (reject fake domains & sarwesv@sarwesv.com)
-  const validation = validateRealEmail(googleEmail);
-  if (!validation.valid) {
-    showToast(validation.error, 'warning');
-    return;
-  }
-
-  // 4. Save subscriber & dispatch instant notification email to mogalt@gmail.com
-  await subscribeToNewsletter(googleEmail, googleName, 'google');
 };
 
 async function subscribeToNewsletter(email, displayName = 'Subscriber', authType = 'email') {
