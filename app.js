@@ -724,7 +724,40 @@ function initNewsletterSection() {
   }
 }
 
-window.handleGoogleNewsletterSignIn = function() {
+window.handleGoogleNewsletterSignIn = async function() {
+  if (typeof firebase !== 'undefined' && firebase.auth) {
+    try {
+      showToast('Opening Google Sign-In popup...', 'info');
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('email');
+      provider.addScope('profile');
+
+      const result = await firebase.auth().signInWithPopup(provider);
+      const user = result.user;
+
+      if (user && user.email) {
+        const displayName = user.displayName || user.email.split('@')[0];
+        showToast(`Successfully authenticated as ${user.email}!`, 'success');
+        await subscribeToNewsletter(user.email, displayName, 'google_oauth');
+        return;
+      }
+    } catch (error) {
+      console.warn("Google Auth Popup Notice:", error);
+      if (error.code === 'auth/popup-closed-by-user') {
+        showToast('Google Sign-In window was closed.', 'warning');
+        return;
+      } else if (error.code === 'auth/unauthorized-domain') {
+        showToast('Notice: Domain requires authorization in Firebase Auth console.', 'warning');
+      } else if (error.code === 'auth/configuration-not-found' || error.code === 'auth/operation-not-allowed') {
+        showToast('Notice: Enable Google Provider in Firebase Auth console.', 'warning');
+      }
+    }
+  }
+
+  openGoogleModalFallback();
+};
+
+window.openGoogleModalFallback = function() {
   const modal = document.getElementById('google-signin-modal');
   const emailInput = document.getElementById('google-account-email');
   const valMsg = document.getElementById('google-modal-validation-msg');
