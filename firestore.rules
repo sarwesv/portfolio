@@ -4,7 +4,10 @@ service cloud.firestore {
     match /newsletter_subscribers/{subscriberId} {
       allow create, update: if request.resource.data.email is string
                            && request.resource.data.email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
-      allow read: if request.auth != null && request.auth.token.email.lower() == 'mogalt@gmail.com';
+      allow read: if request.auth != null && (
+        request.auth.token.email.lower() == 'mogalt@gmail.com' ||
+        request.auth.token.email.lower() == 'sarvick.vemula@gmail.com'
+      );
     }
   }
 }
