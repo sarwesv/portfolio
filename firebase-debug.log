@@ -1,0 +1,85 @@
+[debug] [2026-09-04T21:00:31.035Z] ----------------------------------------------------------------------
+[debug] [2026-09-04T21:00:31.037Z] Command:       /usr/local/bin/node /Users/sarv/.npm/_npx/ba4f1959e38407b5/node_modules/.bin/firebase deploy --only auth --project sarwesv-portfolio-app
+[debug] [2026-09-04T21:00:31.037Z] CLI Version:   15.29.0
+[debug] [2026-09-04T21:00:31.037Z] Platform:      darwin
+[debug] [2026-09-04T21:00:31.037Z] Node Version:  v24.13.1
+[debug] [2026-09-04T21:00:31.037Z] Detected Agent: antigravity
+[debug] [2026-09-04T21:00:31.037Z] Time:          Fri Sep 04 2026 17:00:31 GMT-0400 (Eastern Daylight Time)
+[debug] [2026-09-04T21:00:31.037Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-09-04T21:00:31.886Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-09-04T21:00:31.887Z] > authorizing via signed-in user (mogalt@gmail.com)
+[debug] [2026-09-04T21:00:31.887Z] [iam] checking project sarwesv-portfolio-app for permissions ["firebase.projects.get","firebase.projects.update","firebaseauth.configs.update"]
+[debug] [2026-09-04T21:00:31.895Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:31.895Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:31.895Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions [none]
+[debug] [2026-09-04T21:00:31.895Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions  x-goog-user-project=sarwesv-portfolio-app
+[debug] [2026-09-04T21:00:31.895Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions {"permissions":["firebase.projects.get","firebase.projects.update","firebaseauth.configs.update"]}
+[debug] [2026-09-04T21:00:32.142Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions 200
+[debug] [2026-09-04T21:00:32.142Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sarwesv-portfolio-app:testIamPermissions {"permissions":["firebase.projects.get","firebase.projects.update","firebaseauth.configs.update"]}
+[info] 
+[info] === Deploying to 'sarwesv-portfolio-app'...
+[info] 
+[info] i  deploying auth 
+[debug] [2026-09-04T21:00:32.144Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:32.144Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:32.144Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sarwesv-portfolio-app/webApps pageSize=100
+[debug] [2026-09-04T21:00:32.818Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sarwesv-portfolio-app/webApps 200
+[debug] [2026-09-04T21:00:32.818Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sarwesv-portfolio-app/webApps {"apps":[{"name":"projects/sarwesv-portfolio-app/webApps/1:442158153809:web:ea0a9f40fd8a917fce3870","appId":"1:442158153809:web:ea0a9f40fd8a917fce3870","displayName":"sarwesv-portfolio-web","projectId":"sarwesv-portfolio-app","webId":"ZGE1NTYxMjItMmVmNi00MmU4LTgxYzQtMjMyYzI2NTU2ZWNj","apiKeyId":"ab68faf9-ae80-4958-818a-908ea74e835f","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_e4b6d3ee-b520-4f45-9daa-d626679b33c4"}]}
+[info] Enabling auth providers: Google sign-in...
+[debug] [2026-09-04T21:00:32.819Z] [provision] Starting Firebase app provisioning...
+[debug] [2026-09-04T21:00:32.819Z] [provision] Request: {
+  "appNamespace": "1:442158153809:web:ea0a9f40fd8a917fce3870",
+  "parent": "projects/sarwesv-portfolio-app",
+  "firebaseAuthInput": {
+    "googleSigninProviderMode": "PROVIDER_ENABLED",
+    "googleSigninProviderConfig": {
+      "publicDisplayName": "sarwesv Portfolio",
+      "customerSupportEmail": "mogalt@gmail.com"
+    }
+  },
+  "webInput": {}
+}
+[debug] [2026-09-04T21:00:32.819Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:32.819Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:32.819Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp [none]
+[debug] [2026-09-04T21:00:32.819Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp {"appNamespace":"1:442158153809:web:ea0a9f40fd8a917fce3870","parent":"projects/sarwesv-portfolio-app","firebaseAuthInput":{"googleSigninProviderMode":"PROVIDER_ENABLED","googleSigninProviderConfig":{"publicDisplayName":"sarwesv Portfolio","customerSupportEmail":"mogalt@gmail.com"}},"webInput":{}}
+[debug] [2026-09-04T21:00:33.185Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp 200
+[debug] [2026-09-04T21:00:33.185Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1alpha/firebase:provisionFirebaseApp {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:33.185Z] [provision] Operation started: operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi
+[debug] [2026-09-04T21:00:33.185Z] [provision] Polling for operation completion...
+[debug] [2026-09-04T21:00:33.186Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:33.186Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:33.187Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:33.570Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:33.570Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:33.772Z] [Provision Firebase App Poller] Retrying task index 0
+[debug] [2026-09-04T21:00:33.773Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:33.773Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:33.774Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:34.141Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:34.141Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:34.542Z] [Provision Firebase App Poller] Retrying task index 0
+[debug] [2026-09-04T21:00:34.543Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:34.543Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:34.543Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:34.837Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:34.838Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:35.639Z] [Provision Firebase App Poller] Retrying task index 0
+[debug] [2026-09-04T21:00:35.640Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:35.640Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:35.641Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:35.885Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:35.886Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:37.488Z] [Provision Firebase App Poller] Retrying task index 0
+[debug] [2026-09-04T21:00:37.488Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:37.488Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:37.488Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:37.728Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:37.729Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
+[debug] [2026-09-04T21:00:40.934Z] [Provision Firebase App Poller] Retrying task index 0
+[debug] [2026-09-04T21:00:40.935Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:40.935Z] Checked if tokens are valid: true, expires at: 1788558840709
+[debug] [2026-09-04T21:00:40.935Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi [none]
+[debug] [2026-09-04T21:00:41.204Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi 200
+[debug] [2026-09-04T21:00:41.204Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi {"name":"operations/workflows/ZWQ2ZDhiZWItNDIzYS00NWM1LWEzN2MtZWI3ODQ2M2MzMjBi"}
