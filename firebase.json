@@ -3,7 +3,11 @@
     "providers": {
       "googleSignIn": {
         "oAuthBrandDisplayName": "sarwesv Portfolio",
-        "supportEmail": "mogalt@gmail.com"
+        "supportEmail": "mogalt@gmail.com",
+        "authorizedDomains": [
+          "sarwesv.github.io",
+          "localhost"
+        ]
       }
     }
   },

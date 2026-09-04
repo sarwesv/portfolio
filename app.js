@@ -725,36 +725,36 @@ function initNewsletterSection() {
 }
 
 window.handleGoogleNewsletterSignIn = async function() {
-  if (typeof firebase !== 'undefined' && firebase.auth) {
-    try {
-      showToast('Opening Google Sign-In popup...', 'info');
-      const provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('email');
-      provider.addScope('profile');
-
-      const result = await firebase.auth().signInWithPopup(provider);
-      const user = result.user;
-
-      if (user && user.email) {
-        const displayName = user.displayName || user.email.split('@')[0];
-        showToast(`Successfully authenticated as ${user.email}!`, 'success');
-        await subscribeToNewsletter(user.email, displayName, 'google_oauth');
-        return;
-      }
-    } catch (error) {
-      console.warn("Google Auth Popup Notice:", error);
-      if (error.code === 'auth/popup-closed-by-user') {
-        showToast('Google Sign-In window was closed.', 'warning');
-        return;
-      } else if (error.code === 'auth/unauthorized-domain') {
-        showToast('Notice: Domain requires authorization in Firebase Auth console.', 'warning');
-      } else if (error.code === 'auth/configuration-not-found' || error.code === 'auth/operation-not-allowed') {
-        showToast('Notice: Enable Google Provider in Firebase Auth console.', 'warning');
-      }
-    }
+  if (typeof firebase === 'undefined' || !firebase.auth) {
+    showToast('Initializing Firebase Auth. Please try again in a second...', 'info');
+    return;
   }
 
-  openGoogleModalFallback();
+  try {
+    showToast('Opening Google Sign-In window...', 'info');
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('email');
+    provider.addScope('profile');
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    const result = await firebase.auth().signInWithPopup(provider);
+    const user = result.user;
+
+    if (user && user.email) {
+      const displayName = user.displayName || user.email.split('@')[0];
+      showToast(`🎉 Authenticated as ${user.email}!`, 'success');
+      await subscribeToNewsletter(user.email, displayName, 'google_oauth');
+    }
+  } catch (error) {
+    console.error("Firebase Google Auth Error:", error);
+    if (error.code === 'auth/popup-closed-by-user') {
+      showToast('Google Sign-In popup was closed.', 'warning');
+    } else if (error.code === 'auth/unauthorized-domain') {
+      showToast('Firebase Auth notice: Add sarwesv.github.io to authorized domains.', 'warning');
+    } else {
+      showToast('Google Auth Notice: ' + error.message, 'warning');
+    }
+  }
 };
 
 window.openGoogleModalFallback = function() {
