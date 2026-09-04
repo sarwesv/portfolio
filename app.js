@@ -741,8 +741,8 @@ window.handleGoogleNewsletterSignIn = async function() {
     const user = result.user;
 
     if (user && user.email) {
-      const displayName = user.displayName || user.email.split('@')[0];
-      showToast(`🎉 Authenticated as ${user.email}!`, 'success');
+      const displayName = user.displayName || 'Google User';
+      showToast('🎉 Authenticated successfully!', 'success');
       await subscribeToNewsletter(user.email, displayName, 'google_oauth');
     }
   } catch (error) {
@@ -853,5 +853,5 @@ function updateNewsletterUI(email, displayName) {
 
   if (formBox) formBox.style.display = 'none';
   if (subBadge) subBadge.style.display = 'block';
-  if (emailDisplay) emailDisplay.textContent = `Subscribed as ${email} (${displayName})`;
+  if (emailDisplay) emailDisplay.textContent = `Subscribed to App Launch Notifications!`;
 }
