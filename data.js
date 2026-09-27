@@ -97,27 +97,6 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "lofi-player",
-      title: "Lofi Ambient Player",
-      category: "web",
-      featured: false,
-      badge: "Audio App",
-      tagline: "Minimalist ambient Lofi music player with relaxation visuals.",
-      description: "Web music player tailored for study and focus with soothing Lofi beats and visual background animations.",
-      longDescription: "An aesthetic web audio player featuring curated Lofi audio tracks, ambient sound controls, and relaxing background visualizers.",
-      repoUrl: "https://github.com/sarwesv/Lofi",
-      demoUrl: "https://sarwesv.github.io/Lofi/",
-      tags: ["JavaScript", "Web Audio", "CSS Glassmorphism", "Music"],
-      metrics: [
-        { label: "Design", value: "Glassmorphism" },
-        { label: "Deploy", value: "GitHub Pages" }
-      ],
-      features: [
-        "Audio playback controls with track toggles",
-        "Ambient background mood lighting visuals"
-      ]
-    },
-    {
       id: "game-2048",
       title: "2048 Tile Game",
       category: "web",
