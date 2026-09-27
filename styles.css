@@ -402,6 +402,10 @@ button, input, select, textarea {
   align-items: center;
 }
 
+.hero-grid > * {
+  min-width: 0;
+}
+
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -577,6 +581,12 @@ button, input, select, textarea {
   font-size: 0.825rem;
   color: #38bdf8;
   overflow-x: auto;
+}
+
+.code-snippet-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* SECTION TITLES */

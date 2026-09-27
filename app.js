@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimelineSection();
   initContactForm();
   initNewsletterSection();
-  initScrollEffects();
   initModalEvents();
 });
 
